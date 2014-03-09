@@ -1,0 +1,344 @@
+#breadcrumb ul li a.no-bread:hover {
+	text-decoration:none;
+	cursor:default
+}
+#breadcrumb {
+	overflow:hidden;
+	padding:20px 0 12px 60px;
+	margin:0;
+	white-space:nowrap;
+	word-break:keep-all;
+	text-overflow:ellipsis;
+	width:320px
+}
+#breadcrumb ul {
+	list-style:none
+}
+#breadcrumb ul li {
+	float:left;
+	margin-right:.5em;
+	color:#666;
+	max-width:200px;
+	word-break:keep-all;
+	text-overflow:ellipsis;
+	overflow:hidden
+}
+#breadcrumb ul li a {
+	color:#606060;
+	text-decoration:none;
+	font-size:12px;
+	margin-right:.5em;
+	font-weight:700
+}
+#breadcrumb ul li .not-a:hover {
+	text-decoration:none
+}
+#breadcrumb ul li a:hover {
+	text-decoration:underline
+}
+#short-breadcrumb {
+	float:left;
+	width:222px
+}
+
+.title-btns {
+    float:right;
+    overflow:hidden;
+    margin:14px 0 15px;
+}
+
+.title-btns a:hover span.button-label {
+    color:#fff
+}
+
+.tips {
+	padding:10px 80px 0 25px;
+	font-size:10px;
+	color: #999;
+}
+
+#imgContainer {
+	font-size:12px;
+	padding-bottom: 20px;
+	min-height:300px;
+	box-shadow:2px 0 3px 0 rgba(180,180,180,.4);
+	border-width:1px;
+	border-style:solid;
+	position:relative;
+	border-color:#fff;
+	*border-color:#e7e7e7;
+	*border-top-color:#fff;
+	z-index:1
+}
+#picWrap {
+	margin:0 auto;
+	background-color:transparent;
+	position:relative;
+	height:500px;
+	_height:500px
+}
+#picTable {
+	width:100%
+}
+#picTable th {
+	padding:0;
+	height:0
+}
+#picTable th.header {
+	background-color:#fff
+}
+#picTable th p {
+	background-color:#fff;
+	line-height:24px;
+	float:left;
+	font-size:14px;
+	padding:0 0 0 12px;
+	color:#666;
+	visibility:visible
+}
+#picTable th p.no-site-info {
+	visibility:hidden
+}
+#picTable th p a {
+	text-decoration:none;
+	color:#666
+}
+#picTable th p a:hover {
+	text-decoration:underline
+}
+#picTable td.info {
+	background-color:#fff;
+	color:#666;
+	height:0;
+	padding:20px;
+	font-size:14px;
+	vertical-align:top
+}
+#picTable td.info p {
+	padding:0;
+	width:680px;
+	overflow:hidden;
+	word-wrap:break-word;
+	word-break:break-all
+}
+
+#picWrap {
+	margin:0 auto;
+	background-color:transparent;
+	position:relative;
+	height:500px;
+	_height:500px
+}
+#picTable {
+	width:100%
+}
+#picTable th {
+	padding:0;
+	height:0
+}
+#picTable th.header {
+	background-color:#fff
+}
+#picTable th p {
+	background-color:#fff;
+	line-height:24px;
+	float:left;
+	font-size:14px;
+	padding:0 0 0 12px;
+	color:#666;
+	visibility:visible
+}
+#picTable th p.no-site-info {
+	visibility:hidden
+}
+#picTable th p a {
+	text-decoration:none;
+	color:#666
+}
+#picTable th p a:hover {
+	text-decoration:underline
+}
+#picTable td.info {
+	background-color:#fff;
+	color:#666;
+	height:0;
+	padding:20px;
+	font-size:14px;
+	vertical-align:top
+}
+#picTable td.info p {
+	padding:0;
+	width:680px;
+	overflow:hidden;
+	word-wrap:break-word;
+	word-break:break-all
+}
+#srcPic {
+	height:100%;
+	margin:0 auto;
+	padding:0;
+	position:relative;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	background-color:#fff
+}
+#srcPic img {
+	position:absolute;
+}
+#srcPic.no-from-url img {
+	cursor:default
+}
+#detailImg {
+	}.prePage {
+	cursor:url(http://img0.bdstatic.com/img/image/mouseup_is.cur),pointer;
+	cursor:url(http://img0.bdstatic.com/img/image/mouseup_is.cur) \9
+}
+.nextPage {
+	cursor:url(http://img0.bdstatic.com/img/image/mousedown_is.cur),pointer;
+	cursor:url(http://img0.bdstatic.com/img/image/mousedown_is.cur) \9
+}
+.lastPage,.firstPage {
+	cursor:auto
+}
+#picInfoMask {
+	background:#fff;
+	position:absolute;
+	width:100%;
+	height:20px;
+	z-index:-1;
+	opacity:.5;
+	filter:alpha(opacity=50)
+}
+#picInfo {
+	bottom:5px;
+	height:20px;
+	line-height:20px;
+	z-index:1;
+	width:100%
+}
+#picInfo:hover #picInfoMask,#picInfo.over #picInfoMask {
+	opacity:.7;(cur_index >= photo_data.photo_ids.length-1)
+	filter:alpha(opacity=70)
+}
+#handle-btn-con {
+	display: none;
+	width:760px
+}
+#picWrap {
+	width:100%
+}
+#picWrap a.btn {
+	position:absolute;
+	width:65px;
+	height:100%;
+	top:0;
+	display:block
+}
+#picWrap a.btn:hover {
+	zoom:1;
+	background-color:#f5f5f5
+}
+
+#picWrap a.btn span {
+	position:fixed;
+	_position:absolute;
+	width:65px;
+	height:46px;
+	top:165px;
+	background-image:url(/static/image/page_button.gif);
+	background-repeat:no-repeat;
+	overflow:hidden;
+	text-indent:-999px
+}
+#detail-img-prev-btn {
+	left:5px
+}
+#detail-img-next-btn {
+	right:5px
+}
+#detail-img-prev-btn span {
+	background-position:-8px 0
+}
+#detail-img-next-btn span {
+	background-position:-78px -0px
+}
+#detail-img-prev-btn:hover span {
+	background-position:-8px -47px
+}
+a#detail-img-prev-btn.disabled {
+	cursor:default;
+	background-color:#fff;
+	visibility:hidden
+}
+a#detail-img-next-btn.disabled {
+	cursor:default;
+	background-color:#fff;
+	visibility:hidden
+}
+a#detail-img-prev-btn.disabled:hover span {
+	background-position:-8px 0
+}
+a#detail-img-next-btn.disabled:hover span {
+	background-position:-78px 0
+}
+#detail-img-next-btn:hover span {
+	background-position:-78px -47px
+}
+a#detail-img-next-btn.disabled {
+	cursor:default;
+	background-color:#fff
+}
+a#detail-img-next-btn.disabled:hover {
+	cursor:default;
+	background-color:#fff
+}
+a#detail-img-next-btn.disabled:hover span {
+	background-position:-78px 0
+}
+#pic-bottom-bar {
+	padding:15px 15px 0;
+	line-height:37px
+}
+#pic-bottom-bar div {
+	float:left;
+	margin-right:12px
+}
+#pic-bottom-bar div.bottom-wrapper {
+	float:left;
+	padding:5px 0 0;
+	overflow:hidden
+}
+#pic-bottom-bar div.img-title-editor {
+	display:none
+}
+#pic-bottom-bar.editing div.img-title-editor {
+	display:block
+}
+#pic-bottom-bar.editing #btn-edit {
+	display:none
+}
+#pic-bottom-bar.editing #img-title {
+	display:none
+}
+#pic-bottom-bar .img-title-info {
+	padding:4px 10px;
+	float:left
+}
+#pic-bottom-bar #bdshare {
+	display: none;
+	float:right;
+	padding-right: 90px;
+	margin:0
+}
+
+#pic-bottom-bar .share_btn {
+	display: block;
+	font-size: 14px;
+	background: url(/static/image/share_button.png) no-repeat;
+	height: 30px;
+	line-height: 20px;
+	text-indent: 24px;
+	color:#666;
+}

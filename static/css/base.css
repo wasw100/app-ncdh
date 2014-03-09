@@ -1,0 +1,91 @@
+#main {
+    width: 760px;
+    margin: 0 auto;
+}
+
+#wrapper {
+    background: #FFFFFF;
+}
+
+#footer {
+    margin: 20px;
+    text-align: center;
+}
+
+body {
+    background: none repeat scroll 0 0 #F3F2F3;
+    color: #53364c;
+    direction: ltr;
+    line-height: 1.28;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    unicode-bidi: embed;
+}
+html {
+    margin:0;
+    padding:0;
+    border:0
+}
+body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,b,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,dialog,figure,footer,header,hgroup,nav,section {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    font:inherit;
+    vertical-align:baseline;
+    font:12px arial,宋体,sans-serif
+}
+
+
+ul {
+    list-style-type: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #333333;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #3B5998;
+    cursor: pointer;
+    text-decoration: none;
+}
+button {
+    margin: 0;
+}
+a:hover {
+    text-decoration: none;
+}
+img {
+    border: 0 none;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    zoom:1
+}
+table {
+    border-collapse:separate;
+    border-spacing:0
+}
+caption,th,td {
+    text-align:left;
+    font-weight:400;
+    float:none!important
+}
+table,th,td {
+    vertical-align:middle
+}
+

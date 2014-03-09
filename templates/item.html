@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% autoescape None %}
+{% block title %}脑残对话{% end %}
+{% block head %}
+<link rel="stylesheet" href="{{ static_url("css/item.css") }}" />
+{% end %}
+{% block body %}
+<div id="imgContainer">
+<table cellpadding="0" cellspaceing="0" id="picTable">
+<tr>
+    <th class="header">
+<div id="pic-top-bar">
+<div id="short-breadcrumb"><div id="breadcrumb">
+<ul class = "clearfix">
+<li><a href="/item/latest">最新一张</a>&gt;</li>
+<li>当前图片:<span id="cur_id"></span></li>
+</ul>
+</div>
+</div>
+<div class="title-btns" id="title-btns">
+    <div class="tips">小提示: 用键盘不能翻页时,先用鼠标点一下图片</div>
+</div>
+</div>
+    </th>
+</tr>
+<tr>
+    <td align="center" valign="middle">
+        <div id="picWrap">
+            <div id="srcPic">
+                <img src="http://alixiaoer.com/_ui/images/2009/big_load.gif" width="300" height="201" style="left: 230px; top:100px">
+            </div>
+            <div id="handle-btn-con">
+                <a id="detail-img-prev-btn" class="btn" href="javascript:void(0);" title="上一张，支持键盘 ← 键翻页" hidefocus="yes"><span id="detail-prev-btn">&lt;</span></a>
+                <a id="detail-img-next-btn" class="btn" href="javascript:void(0);" title="下一张，支持键盘 → 键翻页"  hidefocus="yes"><span id="detail-next-btn">&gt;</span></a>
+            </div>
+        </div><!-- pic wrap end  -->
+        <div class="clear"></div>
+    </td>
+</tr>
+<tr>
+<td><div id="pic-bottom-bar" class="clearfix">
+<div class="bottom-wrapper">
+<div id="img-title"></div>
+</div>
+<div id="bdshare">
+<a id="share_btn" class="share_btn" href="javascript:void(0);">分享</a>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div><!-- imgContainer end -->
+{% end %}
+{% block foot %}
+<script type="text/javascript" charset="utf-8" src="http://fusion.qq.com/fusion_loader?appid=1101240590&platform=qzone"></script>
+<script type="text/javascript">
+    var console = console || {
+        log : function(){
+            return false;
+        }
+    };
+
+    not_in_frame = (window.top==this);
+
+    $(function() {
+
+        imgs = Array();
+        photo_data = {{ photo_data }};
+        cur_index = photo_data.cur_index;
+        cur_photo_id = null;
+        need_set_scroll = false;
+
+        function need_update(){
+            return (Math.abs(cur_index-photo_data.cur_index)>=3);
+        }
+
+        function update_info() {
+            $.get("/item/"+photo_data.photo_ids[cur_index]+"/info.json", function(result){
+                    if(result.code != 0) {
+                        alert("server error, " + result.msg)
+                    }
+                    photo_data = result.data;
+                    cur_index = photo_data.cur_index;
+                    pre_load_image();
+                }, "json");
+        }
+
+        function setWindowGeight(){
+            var _height=document.getElementById('main').offsetHeight + 240;
+            fusion2.canvas.setHeight({ height : _height});
+        }
+
+        function show_image(photo_id) {
+            $("#cur_id").html(photo_id);
+            if(cur_index == 0) {
+                $("#detail-img-prev-btn").addClass("disabled");
+            } else {
+                $("#detail-img-prev-btn").removeClass("disabled");
+            }
+            if(cur_index >= photo_data.photo_ids.length-1) {
+                $("#detail-img-next-btn").addClass("disabled");
+            } else {
+                $("#detail-img-next-btn").removeClass("disabled");
+            }
+            var img = imgs[photo_id];
+            $("#detail-img-prev-btn").attr("style", "height: "+img.height+"px;");
+            $("#detail-img-next-btn").attr("style", "height:"+img.height+"px;");
+            var top = 280;
+            $("#detail-prev-btn").attr("style", "position: fixed; top: "+top+"px;");
+            $("#detail-next-btn").attr("style", "position: fixed; top: "+top+"px;");
+            $("#picWrap").attr("style", "height: "+(img.height)+"px;");
+            $("#srcPic").attr("style", "height: "+img.height+"px; width: 760px;");
+            $("#srcPic").children("img").remove();
+            $("#srcPic").append(img);
+            $("#img-title").html(img.alt);
+            setWindowGeight();
+
+            cur_photo_id = photo_id
+            
+            if(need_set_scroll) {
+                fusion2.canvas.setScroll({
+                    top : 0,
+                    left : 0
+                });
+                need_set_scroll = false;
+            }
+
+            if((typeof window.history.pushState) === "function") {
+                window.history.pushState({},0,"http://"+window.location.host+"/item/"+photo_id);
+            }else {
+                window.location.hash = "#"+photo_id;
+            }
+
+            if(need_update()) {
+                update_info();
+            }
+        }
+
+        $("#detail-img-prev-btn").click(function(){
+            //上一张图片
+            var photo_id = photo_data.photo_ids[--cur_index];
+            show_image(photo_id);
+            
+        });
+
+        $("#detail-img-next-btn").click(function(){
+            //下一张图片
+            var photo_id = photo_data.photo_ids[++cur_index];
+            show_image(photo_id);
+        });
+
+        //键盘事件
+        $(document).on("keydown", function(e) {
+            var photo_id = null;
+            if (e.keyCode == 37) {
+                photo_id = photo_data.photo_ids[--cur_index];
+                
+            }else if (e.keyCode == 39) {
+                photo_id = photo_data.photo_ids[++cur_index];
+            }
+            if(photo_id != null) {
+                show_image(photo_id);
+            }
+            return true;
+        });
+
+        function load_image(info) {
+            var img = new Image();
+            img.src = info.url;
+            img.width = info.width;
+            img.height = info.height;
+            img.alt = info.desc;
+            $(img).attr("style", "top:0; left: "+(760-info.width)/2+"px;")
+            imgs[info.id] = img;
+        }
+
+        function pre_load_image() {
+            for(var i in photo_data.photo_info) {
+                var info = photo_data.photo_info[i]
+                if(typeof imgs[info.id] == "undefined") {
+                    load_image(info)
+                }
+            };
+        }
+
+        function show_cur_image() {
+            var info = photo_data.photo_info[cur_index]
+            if(typeof imgs[info.id] == "undefined") {
+                load_image(info)
+            }
+            var img = imgs[info.id];
+            img.onload = function() {
+                show_image(info.id);
+                $("#handle-btn-con").show();
+                $("#bdshare").show();
+                pre_load_image();
+            }
+        }
+        show_cur_image();
+
+        fusion2.iface.updateClientRect(function(rect) { 
+            if(rect.top>5){
+                need_set_scroll = true;
+            }
+            if(not_in_frame) {
+                return;
+            }
+            var top = rect.top + 280;
+            var top2 = rect.bottom - 500;
+            if(top > top2 && top2>280) {
+                top = top2;
+            }
+            document.getElementById("detail-prev-btn").style.top = top + "px"; 
+            document.getElementById("detail-next-btn").style.top = top + "px";
+        });
+
+        $("#share_btn").click(function() {
+            var img = imgs[cur_photo_id];
+            var title = img.alt;
+            fusion2.dialog.sendStory({
+                title: title,
+                img: img.src,
+                summary: "点击查看大图: "+title,
+                msg: title,
+                button: "进入应用",
+                source: cur_photo_id                
+            });
+        });
+        
+    });
+</script>
+{% end %}
