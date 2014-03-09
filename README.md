@@ -9,7 +9,7 @@
 
 * 初始化数据
 
-在MySQL中建立数据库, 并在database.py下将db_path设为自己MySQL对应的地址
+在MySQL中建立数据库, 并在[database.py](https://github.com/wasw100/app-ncdh/blob/master/database.py)下将db_path设为自己MySQL对应的地址
 
 执行init_data
 
